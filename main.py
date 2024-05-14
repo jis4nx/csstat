@@ -4,6 +4,7 @@ import httpx
 from models import Player
 from tasks import parse_player_data
 from cslog import logger
+import uvicorn
 
 from fake_useragent import UserAgent
 
@@ -35,3 +36,6 @@ async def fetch_player_data(player_id: str, retries=5) -> Player:
 async def get_csstats(player_id):
     rank = await fetch_player_data(player_id)
     return rank
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=8000)
