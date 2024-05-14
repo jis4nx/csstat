@@ -28,7 +28,7 @@ async def fetch_player_data(player_id: str, retries=5) -> Player:
                     attempt + 1} failed with status code {resp.status_code}, retrying...")
         logger.error(f"Status Code: {resp.status_code}")
         raise HTTPException(status_code=resp.status_code,
-                            detail="Player not found")
+                            detail="Player Not found")
 
 
 @app.get("/players/{player_id}")
