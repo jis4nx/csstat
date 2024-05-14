@@ -25,8 +25,7 @@ async def fetch_player_data(player_id: str, retries=5) -> Player:
                 data = await parse_player_data(soup)
                 return data
             elif attempt < retries:
-                logger.warning(f"Attempt {
-                    attempt + 1} failed with status code {resp.status_code}, retrying...")
+                logger.warning(f"Attempt {attempt + 1} failed with status code {resp.status_code}, retrying...")
         logger.error(f"Status Code: {resp.status_code}")
         raise HTTPException(status_code=resp.status_code,
                             detail="Player Not found")
