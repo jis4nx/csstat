@@ -35,4 +35,4 @@ class Player:
     player_rank: Ranks
     player_stats: Stats
     player_map: Map
-    player_weapon: Weapon | None 
+    player_weapon: Weapon
