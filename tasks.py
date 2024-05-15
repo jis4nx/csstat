@@ -44,7 +44,7 @@ def _parse_maps(soup: BeautifulSoup) -> Map:
     return Map(highest_win={most_played_map[0]: most_played_map[1]}, least_win={least_played_map[0]: least_played_map[1]})
 
 
-def _parse_map_data(map_div: bs4.element.Tag) -> tuple[str, str]:
+def _parse_map_data(map_div: bs4.element.Tag) -> Tuple[str, str]:
     map_text = map_div.select("span")[0].text.strip().title()
     map_image = map_div.select("img")[0].get(
         "src") or map_div.select("img")[0].get("data-cfsrc")
