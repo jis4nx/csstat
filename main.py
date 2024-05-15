@@ -5,7 +5,7 @@ from models import Player
 from tasks import parse_player_data
 from cslog import logger
 import uvicorn
-
+import time
 from fake_useragent import UserAgent
 
 app = FastAPI()
@@ -26,6 +26,8 @@ async def fetch_player_data(player_id: str, retries=5) -> Player:
                 return data
             elif attempt < retries:
                 logger.warning(f"Attempt {attempt + 1} failed with status code {resp.status_code}, retrying...")
+                time.sleep(1)
+                
         logger.error(f"Status Code: {resp.status_code}")
         raise HTTPException(status_code=resp.status_code,
                             detail="Player Not found")
