@@ -12,7 +12,8 @@ app = FastAPI()
 URL = "https://csstats.gg/player"
 
 # Fake User Agent
-ua = UserAgent()
+ua = UserAgent(browsers=['edge', 'chrome', 'firefox'], os="windows", platforms='pc')
+
 header = {"User-Agent": ua.random}
 
 
